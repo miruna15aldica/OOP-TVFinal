@@ -52,6 +52,7 @@ public class RecommendationAction extends Action implements Command {
         }
 
         // daca nu gasim film ??
+        // mai avem de facut un else, dar mai tarziu asta, sa ne mai desteptam putin inainte
 
         System.out.println(user.getNotifications().size());
 
