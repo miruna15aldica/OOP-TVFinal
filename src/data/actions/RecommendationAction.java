@@ -49,6 +49,27 @@ public class RecommendationAction extends Action implements Command {
             user.getNotifications().add(new Notification(
                     "No recommendation", "Recommendation"
                     ));
+        } else {
+            var movies = currentContext.getMovies().getAll().stream().filter(
+                    m -> user.getLikedMovies().stream()
+                            .anyMatch(m2 -> Objects.equals(m.getName(), m2.getName())
+                            )).toList();
+            genres = genres.stream().filter(g -> movies.stream()
+                    .anyMatch(m -> m.getGenres().contains(g))).collect(Collectors.toList());
+            genres.sort(String::compareTo);
+            genres.sort((g1, g2) -> sign(movies.stream().filter(m -> m.getGenres().contains(g2)).count() - movies.stream().filter(m -> m.getGenres().contains(g1)).count()));
+            genres.forEach(System.out::println);
+            var visibleMovies = new ArrayList<>(currentContext.getMovies().getAll());
+            visibleMovies.forEach(System.out::println);
+            visibleMovies.forEach(m -> System.out.println(m.getNumLikes()));
+            visibleMovies.forEach(System.out::println);
+            for(var g : genres) {
+                var movie = visibleMovies.stream().filter(m -> m.getGenres().contains(g)).findFirst().orElse(null);
+                if(movie != null) {
+                    user.getNotifications().add(new Notification(movie.getName(),  "Recommendation"));
+                    break;
+                }
+            }
         }
 
         // daca nu gasim film ??

@@ -27,7 +27,7 @@ public class Main {
         //solve(inputFilename, "C:\\Users\\Admin\\Desktop\\Dubla-tema2\checker\\resources\\"
         //+ x[x.length-1]);
 //        String inputFilename = //args[0];
-//                "C:\\Users\\Admin\\Desktop\\Dubla-tema2\\checker\\resources\\in\\basic_8.json";
+//                "C:\\Users\\Admin\\Desktop\\Dubla-tema2\\checker\\resources\\in\\basic_6.json";
 //        solve(inputFilename,
 //                "C:\\Users\\Admin\\Desktop\\Dubla-tema2\\checker\\resources\\out.json");
     }

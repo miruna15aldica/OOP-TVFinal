@@ -5,8 +5,11 @@ Starting audit...
 [ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\DatabaseDeleteAction.java:1: File does not end with a newline. [NewlineAtEndOfFile]
 [ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\DatabaseDeleteAction.java:25:12: Variable 'deletedMovie' must be private and have accessor methods. [VisibilityModifier]
 [ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\OnPageAction.java:31:5: Class 'OnPageAction' looks like designed for extension (can be subclassed), but the method 'execute' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'OnPageAction' final or making the method 'execute' static/final/abstract/empty, or adding allowed annotation for the method. [DesignForExtension]
-[ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\RecommendationAction.java:13:8: Unused import - java.util.Objects. [UnusedImports]
-[ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\RecommendationAction.java:14:8: Unused import - java.util.stream.Collectors. [UnusedImports]
+[ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\RecommendationAction.java:60: Line is longer than 100 characters (found 173). [LineLength]
+[ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\RecommendationAction.java:66:13: 'for' is not followed by whitespace. [WhitespaceAround]
+[ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\RecommendationAction.java:67: Line is longer than 100 characters (found 115). [LineLength]
+[ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\RecommendationAction.java:68:17: 'if' is not followed by whitespace. [WhitespaceAround]
+[ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\RecommendationAction.java:69: Line is longer than 100 characters (found 102). [LineLength]
 [ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\SubscribeAction.java:13:12: Variable 'subscribedGenre' must be private and have accessor methods. [VisibilityModifier]
 [ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\SubscribeAction.java:20:5: Class 'SubscribeAction' looks like designed for extension (can be subclassed), but the method 'getSubscribedGenre' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'SubscribeAction' final or making the method 'getSubscribedGenre' static/final/abstract/empty, or adding allowed annotation for the method. [DesignForExtension]
 [ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\data\actions\SubscribeAction.java:32:5: Class 'SubscribeAction' looks like designed for extension (can be subclassed), but the method 'execute' does not have javadoc that explains how to do that safely. If class is not designed for extension consider making the class 'SubscribeAction' final or making the method 'execute' static/final/abstract/empty, or adding allowed annotation for the method. [DesignForExtension]
@@ -98,4 +101,4 @@ Starting audit...
 [ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\session\Runner.java:25:32: Variable 'result' must be private and have accessor methods. [VisibilityModifier]
 [ERROR] C:\Users\Admin\Desktop\OOP-TVFinal\.\src\Test.java:9:28: Using the '.*' form of import should be avoided - java.util.concurrent.*. [AvoidStarImport]
 Audit done.
-Checkstyle ends with 98 errors.
+Checkstyle ends with 101 errors.
