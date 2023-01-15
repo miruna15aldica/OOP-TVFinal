@@ -28,16 +28,15 @@ public class SeeDetailsPage extends AbstractPage {
         PageContext currentContext = PageContext.getCurrentContext();
         Movie currentMovie = currentContext.getCurrentMovie();
         User currentUser = currentContext.getCurrentUser();
-        System.out.println(action.getFeature() + " " + currentMovie.getName());
         if (action.getFeature().equals("purchase")) {
+            // Utilizatorul deja a achizitionat filmul
             if (currentUser.getPurchasedMovies().contains(currentMovie)) {
-                System.out.println("User already purchased");
                 getError();
-
                 return;
             }
             if (currentUser.getCredentials().getAccountType()
                     == AccountType.PREMIUM && currentUser.getNumFreePremiumMovies() > 0) {
+                // Adaugam filmul daca inca avem posibilitatea de a achizitiona file gratis
                 currentUser.getPurchasedMovies().add(currentMovie);
                 int purchasedFreeMovies = currentUser.getNumFreePremiumMovies();
                 currentUser.setNumFreePremiumMovies(purchasedFreeMovies - 1);
@@ -45,6 +44,8 @@ public class SeeDetailsPage extends AbstractPage {
                         new ArrayList<Movie>(List.of(currentMovie))));
                 return;
             } else if (currentUser.getTokensCount() > 2) {
+                // In cazul in care nu putem achizitiona gratis,
+                // dar il putem plati
                 currentUser.getPurchasedMovies().add(currentMovie);
                 int currentTokens = currentUser.getTokensCount();
                 currentUser.setTokensCount(currentTokens - 2);
@@ -52,19 +53,17 @@ public class SeeDetailsPage extends AbstractPage {
                         Output(currentUser, new ArrayList<Movie>(List.of(currentMovie))));
                 return;
             }
-            System.out.println("Dumnezeu stie");
             getError();
         } else if (action.getFeature().equals("watch")) {
             if (!currentUser.getPurchasedMovies().contains(currentMovie)) {
+                // Film necumparat
                 getError();
-                System.out.println("Film necumparat");
                 return;
             }
             if (currentUser.getWatchedMovies().contains(currentMovie)) {
-                //getError();
+                // Film deja vizionat
                 Runner.result.add(new Output(currentUser,
                         new ArrayList<Movie>(List.of(currentMovie))));
-                System.out.println("Film deja vazut");
                 return;
             }
             currentUser.getWatchedMovies().add(currentMovie);
@@ -85,24 +84,20 @@ public class SeeDetailsPage extends AbstractPage {
             int maxRate = 5;
             if (!currentUser.getPurchasedMovies().contains(currentMovie)
                     || !currentUser.getWatchedMovies().contains(currentMovie)) {
+                // Film indisponibil
                 getError();
-                System.out.println("Video invalid");
                 return;
             }
             if (currentUser.getRatedMovies().contains(currentMovie)) {
-                //getError();
                 int oldRating = currentContext.getCurrentUser()
                         .getGivenRatings().get(currentMovie.getName());
-
                 int sumRatings = currentMovie.getRatingSum();
                 currentMovie.setRatingSum(sumRatings - oldRating);
                 int ratingCount = currentMovie.getNumRatings() - 1;
                 currentMovie.setNumRatings(ratingCount);
-
-                System.out.println("Video deja rated");
-                //return;
+                // Film deja evaluat (rated)
             } else if (((MovieAction) action).getRateValue() > maxRate) {
-                System.out.println("Invalid rating");
+                // Rating invalid
                 getError();
             }
             int sumRatings = currentMovie.getRatingSum();
@@ -121,9 +116,7 @@ public class SeeDetailsPage extends AbstractPage {
             }
             Runner.result.add(new Output(currentUser, new ArrayList<Movie>(List.of(currentMovie))));
         } else {
-            System.out.println("No feature");
-            //Runner.result.add(new Output(currentUser,
-            // new ArrayList<Movie>(List.of(currentMovie))));
+            // Fara feature
             getError();
         }
 

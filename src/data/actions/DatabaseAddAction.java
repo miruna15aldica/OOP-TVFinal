@@ -15,7 +15,7 @@ public class DatabaseAddAction extends Action implements Command {
 
     @Override
     public final void execute() {
-        System.out.println("Database add");
+        // Baza de date a atiunilor
         PageContext currentContext = PageContext.getCurrentContext();
         currentContext.getMovies().addMovie(addedMovie); // ???
 
@@ -24,8 +24,8 @@ public class DatabaseAddAction extends Action implements Command {
                 && !addedMovie.getCountriesBanned().contains(u.getCredentials().getCountry())
         ).forEach(u -> {
             u.getNotifications().add(new Notification(addedMovie.getName(), "ADD"));
+            // Notificarile de tip add
         });
-        // ....
 
     }
 }

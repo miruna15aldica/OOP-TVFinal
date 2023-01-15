@@ -30,24 +30,20 @@ public class ChangePageMovieAction extends ChangePageAction {
 
     @Override
     public final void execute() {
+
         PageContext currentContext = PageContext.getCurrentContext();
         AbstractPage currentPage = currentContext.getCurrentPage();
+        // Selecteaza filmul cautat
         Movie movieE = currentContext.getVisibleMovies().getByName(movie);
-
-        //System.out.println("PAGE NAME = "+page_name);
-        //System.out.println(movieE==null ? "NULL" : movieE.getName());
-        //System.out.println(currentPage.canGoTo(page_name));
-
+        // Daca gasim filmul, il adaugam in lista de filme
         if (currentPage.canGoTo(pageName) && movieE != null) {
-            //System.out.println("HERE");
             currentContext.setCurrentMovie(movieE);
             Runner.result.add(new Output(currentContext.
                     getCurrentUser(), new ArrayList<Movie>(Arrays.asList(movieE))));
-            //System.out.println(currentContext.getCurrentUser());
-            //System.out.println(movieE);
             currentPage = PageFactory.getPage(pageName);
             currentContext.setCurrentPage(currentPage);
         } else {
+            // Altfel, returnam eroare
             Runner.result.add(Output.error());
         }
     }

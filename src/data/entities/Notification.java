@@ -25,6 +25,10 @@ public class Notification {
         this.message = message;
     }
 
+    /**
+     * Realizam o copie a notificarii
+     * @return
+     */
     public Notification copy() {
         return new Notification(movieName, message);
     }

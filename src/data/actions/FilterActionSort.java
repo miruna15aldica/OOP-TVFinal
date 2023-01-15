@@ -45,6 +45,7 @@ public class FilterActionSort {
             return (o1, o2) -> 0;
         }
         if (this.duration == null) {
+            // Soratre in funtie de rating
             if (this.rating.equals("increasing")) {
 
                 return (o1, o2) -> Objects.compare(o1.getRating(), o2.getRating(),

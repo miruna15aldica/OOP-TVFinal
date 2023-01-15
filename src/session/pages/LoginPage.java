@@ -18,6 +18,7 @@ public class LoginPage extends AbstractPage {
     }
 
     /**
+     * Realizarea logarii utilizatorului
      * @param action
      * @return
      */
@@ -33,6 +34,7 @@ public class LoginPage extends AbstractPage {
 
     @Override
     public final void visit(final OnPageAction action) {
+        // Daca nu putem realiza logarea, ne intoarcem pe pagina de unauth-homepage
         if (!action.getFeature().equals("login")) {
             getError("unauth-homepage");
             return;
@@ -53,7 +55,8 @@ public class LoginPage extends AbstractPage {
             if (Objects.equals(PageContext.getCurrentContext().
                             getCurrentUser().getCredentials().getName(),
                     user.getCredentials().getName())) {
-                getError("unauth-homepage"); // trying to login while already logged in
+                // Incercarea de a ne loga cand deja suntem logati
+                getError("unauth-homepage");
                 return;
             }
         }

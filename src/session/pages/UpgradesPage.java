@@ -23,6 +23,7 @@ public class UpgradesPage extends AbstractPage {
         User currentUser = currentContext.getCurrentUser();
         int magicNumber = 10;
         if (action.getFeature().equals("buy premium account")) {
+            // Actiunea de cumparare a unui cont premium
             if (currentUser.getCredentials().getAccountType() == AccountType.PREMIUM
                     || currentUser.getTokensCount() < magicNumber) {
                 getError();
@@ -32,6 +33,7 @@ public class UpgradesPage extends AbstractPage {
             int currentTokens = currentUser.getTokensCount();
             currentUser.setTokensCount(currentTokens - magicNumber);
         } else if (action.getFeature().equals("buy tokens")) {
+            // Actiunea de cumparare a token-ilor
             int count = ((UpgradesAction) action).getCount();
             if (currentUser.getCredentials().getBalance() < count) {
                 getError();

@@ -7,7 +7,7 @@ import factories.PageFactory;
 import session.pages.AbstractPage;
 
 import java.util.Stack;
-
+// Design pattern Singleton
 public final class PageContext {
     private AbstractPage currentPage = null;
 
@@ -24,7 +24,8 @@ public final class PageContext {
     }
 
     /**
-     * returnam ultima pagina daca exista
+     * Design pattern Singleton
+     * Returnam ultima pagina daca exista
      * @return
      */
     public static PageContext getCurrentContext() {
@@ -35,7 +36,7 @@ public final class PageContext {
     }
 
     /**
-     * setam pagina curenta ca fiind noua pagina si o adaugam la
+     * Setam pagina curenta ca fiind noua pagina si o adaugam la
      * istoric
      * @param newPage
      */
@@ -53,27 +54,25 @@ public final class PageContext {
     }
 
     /**
-     * adaugam la istoric pagina curent accesata
+     * Adaugam la istoric pagina curent accesata
      */
     public void addCurrentPageToHistory() {
         history.push(currentPage);
     }
 
     /**
-     * accesarea paginilor din istoric
+     * Accesarea paginilor din istoric
      * @return
      */
     public AbstractPage peekPageFromHistory(){
         if (history.empty()) {
-            // error
-            //throw new RuntimeException("Empty page history");
             return null;
         }
         return history.peek();
     }
 
     /**
-     * returnam ultima pagina din istoric (daca aceasta exista)
+     * Returnam ultima pagina din istoric (daca aceasta exista)
      * in timpul actiunii de back
      * @return
      */
@@ -137,7 +136,7 @@ public final class PageContext {
      */
     public void setCurrentUser(final User currentUser) {
         if (currentUser != currentContext.currentUser) {
-            history.clear(); // ???
+            history.clear();
         }
         currentContext.currentUser = currentUser;
     }
@@ -149,6 +148,5 @@ public final class PageContext {
     public void setVisibleMovies(final MoviesDatabase visibleMovies) {
         this.visibleMovies = visibleMovies;
     }
-
 
 }

@@ -26,9 +26,7 @@ public final class MovieDeserializer extends StdDeserializer<Movie> {
 
         String name = node.get("name").asText();
 
-        //System.out.println("???");
         String year = node.get("year").asText();
-        //System.out.println("???");
 
         int duration = (int) (node.get("duration")).numberValue();
 

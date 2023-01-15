@@ -11,7 +11,6 @@ public class Output {
     private  String error = null;
     private List<Movie> currentMoviesList = null;
 
-    //@JsonSerialize(using = UserSerializer.class)??
     private  User currentUser;
 
     public  String getError() {
@@ -27,14 +26,12 @@ public class Output {
     }
 
     public Output( String error) {
-        System.out.println("OUTPUT : ERROR");
         this.error = error;
         this.currentUser = null;
         this.currentMoviesList = new ArrayList<>();
     }
 
     public Output( String error, List<Movie> currentMoviesList,  User currentUser) {
-        System.out.println("OUTPUT : OK");
         this.error = error;
         this.currentMoviesList = new ArrayList<>();
         this.currentUser = currentUser.copy();
@@ -43,14 +40,13 @@ public class Output {
     }
 
     public Output( User currentUser) {
-        System.out.println("OUTPUT : OK");
         this.currentUser = currentUser.copy();
         this.error = null;
         this.currentMoviesList = new ArrayList<>();
     }
 
     public Output( User currentUser, List<Movie> movies) {
-        System.out.println("OUTPUT : OK");
+
         this.currentUser = currentUser.copy();
         this.error = null;
         if(movies==null) {
@@ -64,6 +60,7 @@ public class Output {
 
 
     /**
+     * Eroarea
      * @return
      */
     public static Output error() {

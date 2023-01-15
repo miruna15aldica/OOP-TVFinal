@@ -1,6 +1,5 @@
 package session;
 
-import data.actions.ChangePageAction;
 import data.entities.Action;
 import data.entities.Movie;
 import data.entities.Output;
@@ -37,7 +36,6 @@ public final class Runner {
         PageContext context = PageContext.getCurrentContext();
         context.setCurrentUser(null);
         context.setCurrentMovie(null);
-        // make every user given from the beginning premium
         context.setMovies(moviesDB);
         context.setUsers(usersDB);
 
@@ -46,11 +44,8 @@ public final class Runner {
         AbstractPage previousPage = null;
 
         for (var action : actions) {
-            System.out.println(action);
             var x = action.getType();
-            //if(action instanceof ChangePageAction) {
             int debug = 0;
-            //}
             action.execute();
         }
 

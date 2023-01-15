@@ -33,6 +33,7 @@ public abstract class AbstractPage implements Visitor {
      */
 
     /**
+     * Verifcam ca putem naviga sper o anumita pagina
      * @param pageName
      * @return
      */
@@ -41,11 +42,11 @@ public abstract class AbstractPage implements Visitor {
     }
 
     /**
+     * Eroare
      * @return
      */
     public final void getError() {
         Runner.result.add(Output.error());
-        System.out.println("Error");
     }
 
     /**

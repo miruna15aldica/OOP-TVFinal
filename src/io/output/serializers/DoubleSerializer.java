@@ -24,7 +24,7 @@ public final class DoubleSerializer extends StdSerializer<Double> {
         final int hundred = 100;
 
         if (null == value) {
-            //write the word 'null' if there's no value available
+            // Scriem "null" daca nu avem o valoare valabila
             jgen.writeNull();
         } else {
             int p = (int) Math.floor(value);

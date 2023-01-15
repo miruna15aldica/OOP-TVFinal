@@ -30,21 +30,22 @@ public class RecommendationAction extends Action implements Command {
 
     @Override
     public final void execute() {
-        System.out.println("Torcila Troncanila");
         PageContext currentContext = PageContext.getCurrentContext();
 
         User user = currentContext.getCurrentUser();
         if (user == null) {
             return;
         }
+        // Daca userul nu e Premium nu i se fac recomandari
         if (!user.isPremium()) {
             return;
         }
-
+        // Selectam filemele preferate ale utilizatorului dupa genul acestora
         List<String> genres = new java.util.ArrayList<>(user.getLikedMovies()
                 .stream().map(Movie::getGenres)
                 .flatMap(List::stream).distinct().toList());
 
+        // Daca nu gasim genuri, nu primim recdomandari
         if (genres.size() == 0) {
             user.getNotifications().add(new Notification(
                     "No recommendation", "Recommendation"
@@ -54,16 +55,16 @@ public class RecommendationAction extends Action implements Command {
                     m -> user.getLikedMovies().stream()
                             .anyMatch(m2 -> Objects.equals(m.getName(), m2.getName())
                             )).toList();
+            // Facem o lista cu toate filemele care contin un acelasi gen
             genres = genres.stream().filter(g -> movies.stream()
                     .anyMatch(m -> m.getGenres().contains(g))).collect(Collectors.toList());
+            // Sortare alafabetica
             genres.sort(String::compareTo);
+            // Sortare in functie de genurile cele mai apreciate
             genres.sort((g1, g2) -> sign(movies.stream().filter(m -> m.getGenres().contains(g2)).count() - movies.stream().filter(m -> m.getGenres().contains(g1)).count()));
-            genres.forEach(System.out::println);
             var visibleMovies = new ArrayList<>(currentContext.getMovies().getAll());
-            visibleMovies.forEach(System.out::println);
-            visibleMovies.forEach(m -> System.out.println(m.getNumLikes()));
-            visibleMovies.forEach(System.out::println);
             for(var g : genres) {
+                // Recomandam filmul care se pozitioneaza primul pentru fiecare gen
                 var movie = visibleMovies.stream().filter(m -> m.getGenres().contains(g)).findFirst().orElse(null);
                 if(movie != null) {
                     user.getNotifications().add(new Notification(movie.getName(),  "Recommendation"));
@@ -71,11 +72,6 @@ public class RecommendationAction extends Action implements Command {
                 }
             }
         }
-
-        // daca nu gasim film ??
-        // mai avem de facut un else, dar mai tarziu asta, sa ne mai desteptam putin inainte
-
-        System.out.println(user.getNotifications().size());
 
         Runner.result.add(new Output(user, null));
     }

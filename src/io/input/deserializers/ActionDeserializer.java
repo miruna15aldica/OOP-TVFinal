@@ -41,6 +41,7 @@ public final class ActionDeserializer extends StdDeserializer<Action> {
             }
 
             return new ChangePageAction(page);
+            // Stabilim ce returnma in functie de tipul paginii
         } else if (actionType == ActionType.ON_PAGE) {
             String feature = node.get("feature").asText();
             if (Objects.equals(feature, "register")) {

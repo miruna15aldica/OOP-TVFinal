@@ -8,12 +8,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+// Baza de date a tuturor filmelor
 public class MoviesDatabase extends Database<Movie> {
     public MoviesDatabase(final List<Movie> entities) {
         super(entities);
     }
 
     /**
+     * Filmele accesibile respectivului user
      * @param user
      * @return
      */
@@ -32,6 +34,7 @@ public class MoviesDatabase extends Database<Movie> {
     }
 
     /**
+     * Returnarea tututor filmelor care incep cu un anumit String
      * @param key
      * @return
      */
@@ -51,7 +54,6 @@ public class MoviesDatabase extends Database<Movie> {
         }
         List<Movie> movies = new java.util.ArrayList<>(getAll().stream()
                 .filter(filters::contaisSatisfied).collect(Collectors.toList()));
-                //toList());
         movies.sort(filters.getComparator());
         return new MoviesDatabase(movies);
     }

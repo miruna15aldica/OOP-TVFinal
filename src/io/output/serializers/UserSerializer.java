@@ -30,10 +30,6 @@ public final class UserSerializer extends StdSerializer<User> {
         jgen.writeObjectField("watchedMovies", value.getWatchedMovies());
         jgen.writeObjectField("likedMovies", value.getLikedMovies());
         jgen.writeObjectField("ratedMovies", value.getRatedMovies());
-        //jgen.writeObjectField("notifications",
-          //      Utils.serializeList(value.getNotifications(), Notification.class, new NotificationSerializer()));
-
-
         jgen.writeEndObject();
 
 

@@ -23,13 +23,6 @@ public class Main {
         String inputFilename = args[0];
         solve(inputFilename, Test.OUT_FILE);
 
-        //String[] x =inputFilename.split("\\\\");
-        //solve(inputFilename, "C:\\Users\\Admin\\Desktop\\Dubla-tema2\checker\\resources\\"
-        //+ x[x.length-1]);
-//        String inputFilename = //args[0];
-//                "C:\\Users\\Admin\\Desktop\\Dubla-tema2\\checker\\resources\\in\\basic_6.json";
-//        solve(inputFilename,
-//                "C:\\Users\\Admin\\Desktop\\Dubla-tema2\\checker\\resources\\out.json");
     }
 
     /**
@@ -40,7 +33,6 @@ public class Main {
      */
     public static void solve(final String inputFilename, final String outputFilename)
             throws IOException {
-        System.out.println(inputFilename);
         InputData input = InputDataFactory.fromFile(inputFilename);
 
         Runner runner = new Runner(input.getUsers(), input.getMovies());
@@ -48,8 +40,6 @@ public class Main {
         input.getActions().add(new RecommendationAction());
 
         var output = runner.execute(input.getActions());
-
-        //input.getActions().forEach(System.out::println);
 
         var json = Utils.serializeList(output, Output.class, new OutputSerializer());
         BufferedWriter writer = new BufferedWriter(new FileWriter(outputFilename));

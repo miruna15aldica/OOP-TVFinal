@@ -47,7 +47,7 @@ public class FilterActionFilters {
     }
 
     /**
-     *
+     * Sortare
      * @return
      */
     public final Comparator<Movie> getComparator() {

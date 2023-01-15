@@ -30,10 +30,6 @@ public final class UserDeserializer extends StdDeserializer<User> {
         Credentials credentials = Utils
                 .deserialize(credentialsStr, Credentials.class, new CredentialsDeserializer());
 
-
-
-        //List<Notification>
-
         return new User(credentials);
     }
 }

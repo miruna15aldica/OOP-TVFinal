@@ -31,20 +31,20 @@ public class ChangePageAction extends Action implements Command {
      */
     @Override
     public void execute() {
-        System.out.println("Change page to : " + pageName);
         PageContext currentContext = PageContext.getCurrentContext();
         AbstractPage currentPage = currentContext.getCurrentPage();
+        // Verifcam daca de pe pagina curenta putem ajunge pe pagina dorita
         if (currentPage.canGoTo(pageName)) {
             currentPage = PageFactory.getPage(pageName);
             currentContext.setCurrentPage(currentPage);
             if (pageName.equals("movies")) {
-                System.out.println("____");
                 currentContext.setVisibleMovies(currentContext.getMovies().
                         getMoviesAccessibleTo(currentContext.getCurrentUser()));
                 Runner.result.add(new Output(currentContext.getCurrentUser(), currentContext.
                         getMovies().getMoviesAccessibleTo(currentContext.
                                 getCurrentUser()).getAll()));
             } else if (pageName.equals("logout")) {
+                // Daca suntem pe pagina de logout, utilizatorul e deconectat
                 currentContext.setCurrentUser(null);
                 currentContext.setCurrentPage(PageFactory.getPage("unauth-homepage"));
             }

@@ -36,6 +36,7 @@ public class MoviesPage extends AbstractPage {
     public final void doSearch(final SearchAction action) {
         User user = PageContext.getCurrentContext().getCurrentUser();
         PageContext context = PageContext.getCurrentContext();
+        // Filmele vizibile sunt cele accesibile utilizatorului
         context.setVisibleMovies(context.getMovies().getMoviesAccessibleTo(user));
 
         List<Movie> searchResult = context.getVisibleMovies()

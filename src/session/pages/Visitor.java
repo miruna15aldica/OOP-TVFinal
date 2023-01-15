@@ -2,11 +2,12 @@ package session.pages;
 
 import data.actions.OnPageAction;
 
+// Design pattern Visitor
 public interface Visitor {
     /**
      *
      * @param action
      */
-    public abstract void visit(OnPageAction action);
+    abstract void visit(OnPageAction action);
 
 }

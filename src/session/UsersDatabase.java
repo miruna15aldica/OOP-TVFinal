@@ -12,7 +12,7 @@ public class UsersDatabase extends Database<User> {
     }
 
     /**
-     *
+     * Logarea utilizatorului
      * @param username
      * @param password
      * @return
@@ -25,7 +25,7 @@ public class UsersDatabase extends Database<User> {
     }
 
     /**
-     *
+     * Inregistrarea unui nou utilizator
      * @param credentials
      * @return
      */

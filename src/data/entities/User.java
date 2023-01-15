@@ -12,6 +12,7 @@ public final class User {
     @JsonSerialize(using = CredentialsSerializer.class)
     private Credentials credentials;
 
+    // Numarul maxim de filme gratis vazute de utilizatorii premium
     public static final int NUM_FREE_PREMIUM_MOVIES_DEFAULT = 15;
 
     private int tokensCount = 0;
@@ -130,7 +131,7 @@ public final class User {
     }
 
     /**
-     *
+     * Copia utilizatorului
      * @return
      */
     public User copy() {

@@ -13,6 +13,7 @@ import io.input.deserializers.UserDeserializer;
 import java.io.File;
 import java.io.IOException;
 
+// Factory design pattern
 public final class InputDataFactory {
     private InputDataFactory() {
     }

@@ -122,6 +122,7 @@ public class Movie {
     }
 
     /**
+     * Verificam existenta unui actor
      * @param actor
      * @return
      */
@@ -130,6 +131,7 @@ public class Movie {
     }
 
     /**
+     * Verificam existenta unui anumit gen
      * @param genre
      * @return
      */
@@ -138,7 +140,7 @@ public class Movie {
     }
 
     /**
-     *
+     * realizam o copie a filmului
      * @return
      */
     public final Movie copy() {

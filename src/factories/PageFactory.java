@@ -2,6 +2,7 @@ package factories;
 
 import session.pages.*;
 
+// Fcatory design pattern
 public final class PageFactory {
     private PageFactory() {
     }

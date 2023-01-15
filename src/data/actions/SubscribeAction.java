@@ -33,13 +33,14 @@ public class SubscribeAction extends Action implements Command {
     public void execute() {
         PageContext currentContext = PageContext.getCurrentContext();
         AbstractPage page = currentContext.getCurrentPage();
+        // Actiunea de subscribe este posibila doar daca ne aflam pe pagina "see details"
         if (!Objects.equals(page.getName(), "see details")) {
             Runner.result.add(Output.error());
             return;
         }
-        //SeeDetailsPage detailsPage = (SeeDetailsPage) page;
         Movie currentMovie = currentContext.getCurrentMovie();
-
+        // Actiunea de subscribe este posibila doar genul pe care il dorim se
+        // numara printre cele ale filmului
         if (!currentMovie.getGenres().contains(subscribedGenre)) {
             Runner.result.add(Output.error());
             return;
@@ -51,8 +52,6 @@ public class SubscribeAction extends Action implements Command {
         }
 
         currentContext.getCurrentUser().getSubscriptions().add(subscribedGenre);
-
-        // ?
 
     }
 }

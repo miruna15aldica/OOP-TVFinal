@@ -31,6 +31,7 @@ public class OnPageAction extends Action implements Command {
     @Override
     public void execute() {
         AbstractPage currentPage = PageContext.getCurrentContext().getCurrentPage();
+        // Selectarea paginii curente
         currentPage.visit(this);
     }
 }
