@@ -61,13 +61,17 @@ public class RecommendationAction extends Action implements Command {
             // Sortare alafabetica
             genres.sort(String::compareTo);
             // Sortare in functie de genurile cele mai apreciate
-            genres.sort((g1, g2) -> sign(movies.stream().filter(m -> m.getGenres().contains(g2)).count() - movies.stream().filter(m -> m.getGenres().contains(g1)).count()));
+            genres.sort((g1, g2) -> sign(movies.stream()
+                    .filter(m -> m.getGenres().contains(g2)).count() - movies.stream()
+                    .filter(m -> m.getGenres().contains(g1)).count()));
             var visibleMovies = new ArrayList<>(currentContext.getMovies().getAll());
-            for(var g : genres) {
+            for (var g : genres) {
                 // Recomandam filmul care se pozitioneaza primul pentru fiecare gen
-                var movie = visibleMovies.stream().filter(m -> m.getGenres().contains(g)).findFirst().orElse(null);
-                if(movie != null) {
-                    user.getNotifications().add(new Notification(movie.getName(),  "Recommendation"));
+                var movie = visibleMovies.stream()
+                        .filter(m -> m.getGenres().contains(g)).findFirst().orElse(null);
+                if (movie != null) {
+                    user.getNotifications()
+                            .add(new Notification(movie.getName(),  "Recommendation"));
                     break;
                 }
             }

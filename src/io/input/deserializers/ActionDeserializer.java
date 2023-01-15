@@ -69,8 +69,11 @@ public final class ActionDeserializer extends StdDeserializer<Action> {
                 );
                 action.setFilters(filters);
                 return action;
-            } else if (Objects.equals(feature, "watch") ||
-                    Objects.equals(feature, "purchase") || Objects.equals(feature, "like")) {
+            } else if (Objects.equals(feature, "watch")
+                    ||
+                    Objects.equals(feature, "purchase")
+                    ||
+                    Objects.equals(feature, "like")) {
 
                 return new MovieAction(feature);
             } else if (Objects.equals(feature, "rate")) {
@@ -81,25 +84,23 @@ public final class ActionDeserializer extends StdDeserializer<Action> {
             } else if (Objects.equals(feature, "buy tokens")) {
                 String count = Utils.getField(node, "count");
                 return new UpgradesAction(feature, Integer.parseInt(count));
-            } else if(Objects.equals(feature, "subscribe")) {
+            } else if (Objects.equals(feature, "subscribe")) {
                 String subscribedGenre = Utils.getField(node, "subscribedGenre");
                 return new SubscribeAction(subscribedGenre);
             }
             return null;
         }
-        else if(actionType==ActionType.BACK){
+        else if (actionType == ActionType.BACK) {
             return new BackAction();
-        }
-        else if(actionType==ActionType.DATABASE){
+        } else if (actionType == ActionType.DATABASE) {
             String feature = node.get("feature").asText();
-            if(Objects.equals(feature, "add")) {
+            if (Objects.equals(feature, "add")) {
                 String addedMovieJson = node.get("addedMovie").toPrettyString();
                 Movie addedMovie = Utils
                         .deserialize(addedMovieJson, Movie.class,
                                 new MovieDeserializer());
                 return new DatabaseAddAction(addedMovie);
-            }
-            else if(Objects.equals(feature, "delete")) {
+            } else if (Objects.equals(feature, "delete")) {
                 String deletedMovie = node.get("deletedMovie").asText();
                 return new DatabaseDeleteAction(deletedMovie);
             }

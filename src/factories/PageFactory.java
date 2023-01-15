@@ -1,6 +1,14 @@
 package factories;
 
-import session.pages.*;
+import session.pages.AbstractPage;
+import session.pages.LoginPage;
+import session.pages.MoviesPage;
+import session.pages.LogoutPage;
+import session.pages.AuthHomePage;
+import session.pages.RegisterPage;
+import session.pages.SeeDetailsPage;
+import session.pages.UnauthHomePage;
+import  session.pages.UpgradesPage;
 
 // Fcatory design pattern
 public final class PageFactory {

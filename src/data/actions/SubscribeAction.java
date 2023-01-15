@@ -17,7 +17,7 @@ public class SubscribeAction extends Action implements Command {
         this.subscribedGenre = subscribedGenre;
     }
 
-    public String getSubscribedGenre() {
+    public final String getSubscribedGenre() {
         return subscribedGenre;
     }
 
@@ -30,7 +30,7 @@ public class SubscribeAction extends Action implements Command {
     }
 
     @Override
-    public void execute() {
+    public final void execute() {
         PageContext currentContext = PageContext.getCurrentContext();
         AbstractPage page = currentContext.getCurrentPage();
         // Actiunea de subscribe este posibila doar daca ne aflam pe pagina "see details"

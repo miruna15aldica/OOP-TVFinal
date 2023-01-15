@@ -1,5 +1,4 @@
 import data.actions.RecommendationAction;
-import data.entities.Notification;
 import data.entities.Output;
 import factories.InputDataFactory;
 import io.input.InputData;

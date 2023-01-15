@@ -25,12 +25,20 @@ public class MoviesDatabase extends Database<Movie> {
                 .collect(Collectors.toList()));
     }
 
-    public void addMovie(Movie movie){
+    /**
+     *
+     * @param movie
+     */
+    public final void addMovie(final Movie movie) {
         getAll().add(movie);
     }
 
-    public void deleteMovie(String movieName) {
-        getAll().removeIf(m-> Objects.equals(m.getName(), movieName));
+    /**
+     * Stergem filmul cu numele dat ca parametru
+     * @param movieName
+     */
+    public final void deleteMovie(final String movieName) {
+        getAll().removeIf(m -> Objects.equals(m.getName(), movieName));
     }
 
     /**

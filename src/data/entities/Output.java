@@ -1,8 +1,5 @@
 package data.entities;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import io.output.serializers.UserSerializer;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,25 +10,25 @@ public class Output {
 
     private  User currentUser;
 
-    public  String getError() {
+    public  final String getError() {
         return error;
     }
 
-    public  List<Movie> getCurrentMoviesList() {
+    public  final List<Movie> getCurrentMoviesList() {
         return currentMoviesList;
     }
 
-    public  User getCurrentUser() {
+    public  final User getCurrentUser() {
         return currentUser;
     }
 
-    public Output( String error) {
+    public Output(final String error) {
         this.error = error;
         this.currentUser = null;
         this.currentMoviesList = new ArrayList<>();
     }
 
-    public Output( String error, List<Movie> currentMoviesList,  User currentUser) {
+    public Output(final String error, final List<Movie> currentMoviesList, final User currentUser) {
         this.error = error;
         this.currentMoviesList = new ArrayList<>();
         this.currentUser = currentUser.copy();
@@ -39,20 +36,19 @@ public class Output {
 
     }
 
-    public Output( User currentUser) {
+    public Output(final User currentUser) {
         this.currentUser = currentUser.copy();
         this.error = null;
         this.currentMoviesList = new ArrayList<>();
     }
 
-    public Output( User currentUser, List<Movie> movies) {
+    public Output(final User currentUser, final List<Movie> movies) {
 
         this.currentUser = currentUser.copy();
         this.error = null;
-        if(movies==null) {
+        if (movies == null) {
             this.currentMoviesList = null;
-        }
-        else {
+        } else {
             this.currentMoviesList = new ArrayList<>();
             movies.forEach(i -> this.currentMoviesList.add(i.copy()));
         }
@@ -69,7 +65,7 @@ public class Output {
 
 
     @Override
-    public  String toString() {
+    public final   String toString() {
         return "Output{"
                 + "error='" + error + '\''
                 + ", currentMoviesList=" + currentMoviesList
@@ -77,7 +73,7 @@ public class Output {
                 + '}';
     }
 
-    public  boolean isError() {
+    public final boolean isError() {
         return Objects.equals(error, "Error");
     }
 }

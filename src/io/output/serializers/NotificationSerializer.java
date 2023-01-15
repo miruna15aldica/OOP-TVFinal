@@ -17,7 +17,7 @@ public class NotificationSerializer extends StdSerializer<Notification> {
     }
 
     @Override
-    public void serialize(
+    public final void serialize(
             final Notification value, final JsonGenerator jgen, final SerializerProvider provider)
         throws IOException {
 

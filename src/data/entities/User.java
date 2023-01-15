@@ -3,11 +3,9 @@ package data.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.output.serializers.CredentialsSerializer;
-import io.output.serializers.UserSerializer;
 
 import java.util.*;
 
-//@JsonSerialize(using = UserSerializer.class)
 public final class User {
     @JsonSerialize(using = CredentialsSerializer.class)
     private Credentials credentials;
@@ -44,7 +42,7 @@ public final class User {
         return notifications;
     }
 
-    public void setNotifications(List<Notification> notifications) {
+    public void setNotifications(final List<Notification> notifications) {
         this.notifications = notifications;
     }
 
@@ -142,12 +140,12 @@ public final class User {
         watchedMovies.forEach(i -> copyUser.getWatchedMovies().add(i.copy()));
         ratedMovies.forEach(i -> copyUser.getRatedMovies().add(i.copy()));
         purchasedMovies.forEach(i -> copyUser.getPurchasedMovies().add(i.copy()));
-        notifications.forEach(i->copyUser.getNotifications().add(i.copy()));
+        notifications.forEach(i -> copyUser.getNotifications().add(i.copy()));
         return copyUser;
     }
 
     @JsonIgnore
     public boolean isPremium() {
-        return getCredentials().getAccountType()==AccountType.PREMIUM;
+        return getCredentials().getAccountType() == AccountType.PREMIUM;
     }
 }

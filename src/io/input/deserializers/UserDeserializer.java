@@ -5,11 +5,9 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import data.entities.Credentials;
-import data.entities.Notification;
 import data.entities.User;
 
 import java.io.IOException;
-import java.util.List;
 
 public final class UserDeserializer extends StdDeserializer<User> {
 

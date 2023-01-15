@@ -4,23 +4,23 @@ public class Notification {
     private String movieName;
     private String message;
 
-    public String getMovieName() {
+    public final String getMovieName() {
         return movieName;
     }
 
-    public void setMovieName(String movieName) {
+    public final void setMovieName(final String movieName) {
         this.movieName = movieName;
     }
 
-    public String getMessage() {
+    public final String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public final void setMessage(final String message) {
         this.message = message;
     }
 
-    public Notification(String movieName, String message) {
+    public Notification(final String movieName, final String message) {
         this.movieName = movieName;
         this.message = message;
     }

@@ -31,7 +31,7 @@ public class UpgradesAction extends OnPageAction implements Command {
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return "UpgradesAction{"
                 +
                 "count=" + count

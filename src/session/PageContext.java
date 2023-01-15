@@ -64,7 +64,7 @@ public final class PageContext {
      * Accesarea paginilor din istoric
      * @return
      */
-    public AbstractPage peekPageFromHistory(){
+    public AbstractPage peekPageFromHistory() {
         if (history.empty()) {
             return null;
         }

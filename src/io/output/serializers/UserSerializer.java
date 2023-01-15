@@ -3,7 +3,6 @@ package io.output.serializers;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import data.entities.Notification;
 import data.entities.User;
 
 import java.io.IOException;
