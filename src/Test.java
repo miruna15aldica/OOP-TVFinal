@@ -92,8 +92,8 @@ public final class Test {
     private static final String CHECKER_RESOURCES_FOLDER = "checker/resources/";
     private static final File TEST_INPUTS_FILE = new File(CHECKER_RESOURCES_FOLDER + IN_FOLDER);
 
-    public static final String OUT_FILE = "results.out";
-    public static final File TEST_OUT_FILE = new File(OUT_FILE);
+    private static final String OUT_FILE = "results.out";
+    private static final File TEST_OUT_FILE = new File(OUT_FILE);
 
     private static final File CONFIG_FILE = new File(CHECKER_RESOURCES_FOLDER + "config.json");
 

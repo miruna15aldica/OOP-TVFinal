@@ -20,7 +20,7 @@ public class Main {
     public static void main(final String[] args) throws IOException {
         Runner.result.clear();
         String inputFilename = args[0];
-        solve(inputFilename, Test.OUT_FILE);
+        solve(inputFilename, "results.out");
 
     }
 
